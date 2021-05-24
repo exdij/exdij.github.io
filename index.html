@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pl">
 
 <head>
     <script
@@ -31,7 +31,7 @@
         document.querySelector('button').addEventListener('click', function () {
             $("#jqGrid").jqGrid("GridUnload");
             $("#jqGrid").jqGrid({
-                url: 'http://localhost:8080/get_id?name=' + btn_text.value,
+                url: 'https://city-id-lookup.herokuapp.com/get_id?name=' + btn_text.value,
                 mtype: "GET",
                 datatype: "json",
                 colModel: [
