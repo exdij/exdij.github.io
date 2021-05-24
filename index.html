@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/css/ui.jqgrid.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/js/jquery.jqgrid.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\exdij\Desktop\stonk2\css\jquery-ui.css" />
+    <meta charset="utf-8" />
+    <title>API client</title>
+</head>
+<body style="text-align: center;margin: 0 auto;max-width: 800px;font-family: Arial, sans-serif;font-size: 20px;padding: 0 20px;">
+    <h2>Demonstracja działania aplikacji</h2>
+  
+    <p>Użyj pola poniżej by wpisać nazwę miejscowości i wyszukać jej identyfikator w bazie</p>
+    <input type="text" id="input" name="input"><br>
+    <p class="par"></p>
+  
+    <button>Wyszukaj</button>
+  
+    <br><br>
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+
+    <script type="text/javascript"> 
+        var btn_text = document.getElementById("input");
+        document.querySelector('button').addEventListener('click', function () {
+            $("#jqGrid").jqGrid("GridUnload");
+            $("#jqGrid").jqGrid({
+                url: 'http://localhost:8080/get_id?name=' + btn_text.value,
+                mtype: "GET",
+                datatype: "json",
+                colModel: [
+                    { label: 'Numer ID', name: 'id', key: true, width: 75 },
+                    { label: 'Gmina', name: 'name', width: 150 },
+                    { label: 'Województwo', name: 'district', width: 150 },
+                    { label: 'Powiat', name: 'province', width: 150 },
+                    { label: 'Typ gminy', name: 'commune', width: 150 }
+                ],
+				viewrecords: true,
+                width: 800,
+                height: 250,
+                rowNum: 100000,
+                pager: true,
+                shrinkToFit: true,
+                sortname: 'id',
+                sortorder: 'asc',
+                pgbuttons: false,
+                pginput: false,
+                pgtext: ''
+
+            });
+        });
+ 
+   </script>
+
+    
+</body>
+</html>
