@@ -9,7 +9,7 @@
   crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/css/ui.jqgrid.min.css">
     <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/js/jquery.jqgrid.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="C:\Users\exdij\Desktop\stonk2\css\jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <meta charset="utf-8" />
     <title>API client</title>
 </head>
@@ -31,7 +31,8 @@
         document.querySelector('button').addEventListener('click', function () {
             $("#jqGrid").jqGrid("GridUnload");
             $("#jqGrid").jqGrid({
-                url: 'https://city-id-lookup.herokuapp.com/get_id?name=' + btn_text.value,
+                //url: 'https://city-id-lookup.herokuapp.com/get_id?name=' + btn_text.value,
+                url: 'http://localhost:8080/get_id?name=' + btn_text.value,
                 mtype: "GET",
                 datatype: "json",
                 colModel: [
