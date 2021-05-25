@@ -27,6 +27,27 @@
     <div id="jqGridPager"></div>
 
     <script type="text/javascript"> 
+         $("#jqGrid").jqGrid({
+            colModel: [
+                    { label: 'Numer ID', name: 'cityId', key: true, width: 75 },
+                    { label: 'Gmina', name: 'name', width: 150 },
+                    { label: 'Województwo', name: 'district', width: 150 },
+                    { label: 'Powiat', name: 'province', width: 150 },
+                    { label: 'Typ gminy', name: 'commune', width: 150 }
+                ],
+                viewrecords: true,
+                width: 800,
+                height: 250,
+                rowNum: 100000,
+                pager: true,
+                shrinkToFit: true,
+                sortname: 'id',
+                sortorder: 'asc',
+                pgbuttons: false,
+                pginput: false,
+                pgtext: ''
+         });
+
         var btn_text = document.getElementById("input");
         document.querySelector('button').addEventListener('click', function () {
             $("#jqGrid").jqGrid("GridUnload");
@@ -36,7 +57,7 @@
                 mtype: "GET",
                 datatype: "json",
                 colModel: [
-                    { label: 'Numer ID', name: 'id', key: true, width: 75 },
+                    { label: 'Numer ID', name: 'cityId', key: true, width: 75 },
                     { label: 'Gmina', name: 'name', width: 150 },
                     { label: 'Województwo', name: 'district', width: 150 },
                     { label: 'Powiat', name: 'province', width: 150 },
